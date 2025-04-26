@@ -1,0 +1,409 @@
+/* Enhanced styles for DrowzAlert - Modern UI */
+
+:root {
+  /* Core colors */
+  --primary-color: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #60a5fa;
+  --danger-color: #ef4444;
+  --danger-dark: #dc2626;
+  --success-color: #10b981;
+  --success-dark: #059669;
+  --neutral-light: #f3f4f6;
+  --neutral-medium: #e5e7eb;
+  --neutral-dark: #9ca3af;
+  --text-dark: #1f2937;
+  --text-medium: #4b5563;
+  --text-light: #6b7280;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Glass effect */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-bg-dark: rgba(30, 41, 59, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-border-dark: rgba(30, 41, 59, 0.5);
+  
+  /* Gradients */
+  --gradient-blue: linear-gradient(135deg, #3b82f6, #2563eb);
+  --gradient-purple: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  --gradient-green: linear-gradient(135deg, #10b981, #059669);
+  --gradient-red: linear-gradient(135deg, #ef4444, #dc2626);
+  
+  /* Animations */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Dark mode variables */
+.dark {
+  --glass-bg: rgba(30, 41, 59, 0.8);
+  --glass-border: rgba(51, 65, 85, 0.5);
+}
+
+/* Global styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  color: var(--text-dark);
+  min-height: 100vh;
+  transition: background var(--transition-normal);
+}
+
+.dark body {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* Glassmorphism */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+/* Header styles */
+header h1 {
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.025em;
+}
+
+/* Card styles */
+.card {
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Video container styles */
+.video-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+#webcam {
+  border-radius: 12px;
+  transition: filter 0.3s ease;
+}
+
+#output-canvas {
+  border-radius: 12px;
+}
+
+/* Status badge styles */
+#status-badge {
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(4px);
+}
+
+.status-awake {
+  background-color: var(--success-color) !important;
+  border: 2px solid var(--success-dark);
+}
+
+.status-drowsy {
+  background-color: var(--danger-color) !important;
+  border: 2px solid var(--danger-dark);
+}
+
+/* Animation for drowsy alert */
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse-red 1.5s infinite;
+}
+
+/* Button styles */
+.btn {
+  transition: all 0.2s ease;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: linear-gradient(to bottom right, var(--primary-light), var(--primary-color));
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to bottom right, var(--primary-color), var(--primary-dark));
+}
+
+.btn-danger {
+  background: linear-gradient(to bottom right, #f87171, var(--danger-color));
+}
+
+.btn-danger:hover {
+  background: linear-gradient(to bottom right, var(--danger-color), var(--danger-dark));
+}
+
+.btn-neutral {
+  background: linear-gradient(to bottom right, #9ca3af, #6b7280);
+}
+
+.btn-neutral:hover {
+  background: linear-gradient(to bottom right, #6b7280, #4b5563);
+}
+
+/* Stats card styles */
+.stats-card {
+  border-radius: 10px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+}
+
+.stats-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stats-label {
+  color: var(--text-light);
+  font-size: 0.875rem;
+}
+
+.stats-value {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* Drowsy log styles */
+.log-container {
+  border-radius: 10px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.log-entry {
+  border-bottom: 1px solid var(--neutral-medium);
+  padding: 0.5rem 0;
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-time {
+  color: var(--text-light);
+  font-size: 0.75rem;
+}
+
+/* Custom scrollbar for the drowsy log */
+#drowsy-log::-webkit-scrollbar {
+  width: 6px;
+}
+
+#drowsy-log::-webkit-scrollbar-track {
+  background: var(--neutral-light);
+  border-radius: 4px;
+}
+
+#drowsy-log::-webkit-scrollbar-thumb {
+  background: var(--neutral-dark);
+  border-radius: 4px;
+}
+
+#drowsy-log::-webkit-scrollbar-thumb:hover {
+  background: var(--text-light);
+}
+
+/* Settings modal styles */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-normal);
+}
+
+.modal-content {
+  border-radius: 20px;
+  box-shadow: var(--shadow-xl);
+  transform: scale(0.95);
+  opacity: 0;
+  transition: all var(--transition-normal);
+}
+
+.modal-visible {
+  opacity: 1;
+}
+
+.modal-visible .modal-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Modal animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-content {
+  animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Slider styles */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--neutral-medium);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #drowsy-log {
+    max-height: 120px;
+  }
+  
+  .stats-value {
+    font-size: 1.25rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Animation for page load */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.fade-in-delay-1 {
+  animation: fadeIn 0.5s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.fade-in-delay-2 {
+  animation: fadeIn 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+/* Pulse animation for notification badge */
+@keyframes gentle-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.animate-pulse {
+  animation: gentle-pulse 2s infinite;
+}
+
+/* Future features modal specific styles */
+#future-features-modal .modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Dashboard card hover effects */
+.bg-gradient-to-br {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-gradient-to-br:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Drowsy video effect */
+.drowsy-effect {
+  filter: saturate(0.7) contrast(1.1) brightness(0.9);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(59, 130, 246, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
